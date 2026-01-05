@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brown University Portfolio - RPG Cutscene</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+            font-family: 'Press Start 2P', monospace;
+        }
+
+        #game-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            max-width: 1280px;
+            max-height: 720px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        canvas {
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+            image-rendering: -moz-crisp-edges;
+            image-rendering: -webkit-crisp-edges;
+        }
+
+        #loading-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            color: #fff;
+        }
+
+        #loading-text {
+            font-size: 16px;
+            margin-bottom: 20px;
+            animation: pulse 1.5s infinite;
+        }
+
+        #loading-bar-container {
+            width: 300px;
+            height: 20px;
+            border: 2px solid #fff;
+            padding: 2px;
+        }
+
+        #loading-bar {
+            width: 0%;
+            height: 100%;
+            background-color: #00ff88;
+            transition: width 0.3s ease;
+        }
+
+        #loading-percentage {
+            margin-top: 10px;
+            font-size: 12px;
+        }
+
+        #dev-controls {
+            position: fixed;
+            bottom: 10px;
+            left: 10px;
+            background-color: rgba(0, 0, 0, 0.8);
+            padding: 10px;
+            border: 1px solid #333;
+            border-radius: 5px;
+            font-size: 8px;
+            color: #666;
+            z-index: 1001;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <div id="loading-screen">
+            <div id="loading-text">LOADING...</div>
+            <div id="loading-bar-container">
+                <div id="loading-bar"></div>
+            </div>
+            <div id="loading-percentage">0%</div>
+        </div>
+    </div>
+
+    <div id="dev-controls">
+        Dev Controls (console): play(), pause(), seek(time), getTimeline()
+    </div>
+
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>
